@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RPS Game</title>
+        <style>
+            * {
+                font-family: Arial;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+            } 
+            button {
+                height: 100px;
+                transition: .2s;
+            } button:hover {
+                height: 180px;
+            }
+            .options-container {
+                border: 1px solid black;
+                text-align: center;
+                width: 50%;
+                min-width: 300px;
+                background-color: white;
+                margin-bottom: 20px;
+            } 
+            .options{
+                height: 200px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            table, td, tr{
+                border-collapse: collapse;
+                border: 1px solid black;
+                text-align: center;
+            } td, tr {
+                padding: 15px 30px;
+            }
+            .turns-container {
+                width: 100%;
+                display: flex;
+            }
+            .turns-container span{
+                flex: 1;
+                border: 1px solid black;
+                background-color: rgb(123, 255, 255);
+            } a {
+                margin-top: 20px;
+            }
+
+            @media (min-width: 320px) {
+                h2 {
+                    font-size: 18px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2 id="title">
+            ROCK PAPER SCISSOR GAME!
+        </h2>
+
+        <div class="options-container">
+            <p id="prompt"></p>
+
+            <div class="options">
+                 <button onclick=" runGame('rock') ">
+                <img src="img/rock.png" alt="rock">
+
+                </button>
+                <button onclick=" runGame('paper') ">
+                    <img src="img/paper.png" alt="paper">   
+                </button>
+
+                <button onclick=" runGame('scissor') ">
+                    <img src="img/scissors.png" alt="scissor">
+                </button>
+            </div>
+
+            <div class="turns-container">
+                <span id="UT">YOU</span>
+                <span id="OT">OPPONENT</span>
+            </div>
+        </div>
+        
+        <table>
+            <tr>
+                <td colspan="3">score board</td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td>opp</td>
+                <td>tie</td>
+            </tr>
+            <tr>
+                <td id="urScore"></td>
+                <td id="oppScore"></td>
+                <td id="tieScore"></td>
+            </tr>
+        </table>
+
+        <a href="" onclick="localStorage.removeItem('game'); location.reload();">reset score</a>
+        
+        <script>
+
+            const data = 
+            {
+                yourPoint : 0, oppPoint : 0, tie : 0,
+                urTurn : "", oppTurn : ""
+            }
+
+            savedData = JSON.parse(localStorage.getItem('game'));
+            if( savedData ){
+                Object.assign(data, savedData);
+                updateScoreBoard();
+            }
+
+            function updateScoreBoard() {
+                document.getElementById('urScore').innerHTML = data.yourPoint;
+                document.getElementById('oppScore').innerHTML = data.oppPoint;
+                document.getElementById('tieScore').innerHTML = data.tie;
+            }
+
+            function computerTurn() {
+                let n = Math.floor((Math.random() * 3));
+                return result = ['rock', 'paper', 'scissor'][n];
+            } 
+            
+            function runGame(choice) {
+                let result = playGame(choice);
+                
+                const sample = localStorage.setItem('game', JSON.stringify(data));
+                
+                document.getElementById('prompt').innerHTML = result;
+                document.getElementById('UT').innerHTML = data.urTurn;
+                document.getElementById('OT').innerHTML = data.oppTurn;
+                updateScoreBoard();
+
+                if ( result === 'YOU WIN!' ) {
+                    document.querySelector('.options-container').style.backgroundColor = "#99EDC3";
+                } else if ( result === 'YOU LOST...' ) {
+                    document.querySelector('.options-container').style.backgroundColor = "#f69697";
+                } else {
+                    document.querySelector('.options-container').style.backgroundColor = "white";
+                }
+            }
+
+            function playGame( yourTurn ) {
+                compTurn = computerTurn();
+                data.urTurn = yourTurn;
+                data.oppTurn = compTurn;
+
+                if ( yourTurn === compTurn ) {
+                    data.tie ++;
+                    return `TIE!`;
+                } else if ( 
+                    (yourTurn === 'rock' && compTurn === 'scissor') ||
+                    (yourTurn === 'paper' && compTurn === 'rock') || 
+                    (yourTurn === 'scissor' && compTurn === 'paper') )
+                {   
+                    data.yourPoint ++;
+                    return `YOU WIN!`;                      
+                } else {
+                    data.oppPoint ++;
+                    return `YOU LOST...`;
+                }
+            }
+            
+        </script> 
+
+    </body>
+
+
+</html>

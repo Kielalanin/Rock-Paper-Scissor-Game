@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RPS Game</title>
+        <link href="https://fonts.cdnfonts.com/css/anton" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style2.css">
+    </head>
+
+    <body> 
+        <audio id="bgm" src="img/Joshua McLean - Mountain Trials.mp3" preload="auto" hidden>
+            Audio not supported 
+        </audio> 
+        
+        <div class="side-bar">
+            <button onclick="localStorage.removeItem('data'); location.reload(); ">play again</button>
+            <a href="index.html">exit</a>
+        </div>
+
+        <div class="con1">
+            <div class="con1-a">
+                <i class="fa-solid fa-bars menu-bar2" onclick=" showMenu(false); "></i>
+                <i class="fa-solid fa-bars menu-bar" onclick=" showMenu(true); "></i>
+                <div class="js-lives "></div>
+            </div>
+           
+            <div class="con1-b">
+                <img class="logo" src="img/logo.png" alt="">
+            </div>
+            <div class="js-lives2 con1-c"></div>   
+        </div>
+
+        <div class="con2">
+            <div class="con2-a">    
+                <img id="js-yourTurn" src="" alt="">  
+            </div>
+
+            <div class="con2-b">
+                <img id="js-result" src="" alt=""></img>
+                <div class="js-end-choice">
+                    <button onclick="localStorage.removeItem('data'); location.reload(); ">play again</button>
+                    <a href="index.html">exit</a>
+                </div> 
+            </div>
+
+            <div class="con2-c">
+                <img id="js-oppTurn" src="" alt="">
+            </div>
+        </div>
+
+        <div class="con3">
+            <div class="con3-a">
+                <span id="js-yourTurn-txt"></span>    
+            </div>
+
+            <div class="con3-b">
+                <span>VS</span>
+            </div>
+
+            <div class="con3-c">
+                <span id="js-oppTurn-txt"></sp>
+            </div>
+        </div>
+
+        
+        <div class="con5">
+            <div class="con5-a">
+                <span>PLAYER</span>
+            </div>
+            <div class="con5-b">
+                <span>COMPUTER</span>
+            </div>
+        </div>
+        
+        <div class="con4">
+            <div class="con4-a">
+                <button class="js-option" onclick=" runGame('rock'); ">
+                    <img src="img/rock.png" alt="rock">
+                </button>
+                
+                <button class="js-option" onclick=" runGame('paper'); ">
+                    <img src="img/paper.png" alt="paper">
+                </button>
+
+                <button class="js-option" onclick=" runGame('scissor'); ">
+                    <img src="img/scissor.png" alt="scissor">
+                </button>
+            </div>
+
+            <div class="con4-b">
+                <button>
+                    <img src="img/scissor.png" alt="">
+                </button>
+                <button>
+                    <img src="img/paper.png" alt="">
+                </button>
+                <button>
+                    <img src="img/rock.png" alt="">
+                </button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+
+</html>

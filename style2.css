@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anton', Arial;
+    background-color: #292f51;
+    color: white;
+}
+
+img {
+    width: 100px;
+}
+.life-green, .life-gray, .life-red {
+    border-radius: 10px;
+    background-color: #70a1ff;
+    padding: 10px;
+    display: inline-block;
+    margin-left: 10px;
+} 
+.life-gray {
+    background-color: #6e7393;
+} 
+.life-red {
+    background-color: #ff7070;
+}
+
+.con1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+.con1-b, .con3-b {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.con1-b img{
+    margin-top: 20px;
+    width: 80px
+}
+.con1-a, .con3-a {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.con1-c, .con3-c {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.con2 {
+    /* border: 1px solid white; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 50vh;
+    z-index: 0;
+}
+.con2-b {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+.con2-b img{
+    width: 400px;
+    z-index: 100;
+    background-color: transparent;
+}
+.con2-a, .con2-c {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+}.con2-c {
+    justify-content: end;
+} 
+.con2-a img, .con2-c img{
+    height: 100%;
+    width: 300px;
+    position: absolute;
+    top: 0;
+} .con2-c img{
+    transform: scaleX(-1);
+} 
+
+.js-end-choice {
+    border: 1px solid white;
+    display: none;
+    z-index: 300;
+} .js-end-choice a{
+    text-decoration: none;
+    background-color: #ff7070;
+    padding: 10px 30px;
+    font-size: 25px;
+} .js-end-choice button{
+    border: none;
+    background-color: #00bf63;
+    padding: 10px 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.con3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    z-index: 99;
+} 
+.con3-a, .con3-b, .con3-c {
+    position: relative;
+}
+.con3-a span, .con3-b span, .con3-c  span{
+    background-color: transparent;
+    font-size: 50px;
+    position: absolute;
+    top: -60px;
+    font-style: italic;  
+}
+.con3-b span {
+    color:  #fad72a;
+    font-style: normal; 
+    z-index: 200;
+}
+
+.con5 {
+    justify-content: space-between;
+} .con5-a, .con5-b {
+    padding: 0 60px;
+    z-index: 300;
+    background-color: transparent;
+} .con5-a span, .con5-b span{
+    color: #fad72a;
+    font-size: 25px;
+    background-color: transparent;
+}
+
+.con4, .con5 {
+    margin-top: 10px;
+    display: flex;
+}
+.con4-a, .con4-b {
+    background-color: #6e7393;
+    border: 1px solid white;
+    width: 80%;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-around;
+} .con4-b {
+    margin-left: 50px;
+} .con4-a {
+    margin-right: 50px;
+}
+.con4-a img, .con4-b img{
+    background-color: transparent;
+    width: 50px;
+} 
+.con4-a button, .con4-b button{
+    border: 10px solid #70a1ff;
+    border-radius: 300px;
+    padding: 12px 15px;
+    background-color: white;
+    cursor: pointer;
+} .con4-b button {
+    border: 10px solid #ff7070;
+    cursor: not-allowed;
+} .con4-a button:hover {
+    border: 10px solid #2f78ff;
+    background-color: rgb(250, 255, 220);
+}
+
+.menu-bar, .menu-bar2 {
+    font-size: 30px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 600;
+    cursor: pointer;
+    transition: .6s;
+}
+.side-bar {
+    position: absolute;
+    top: 0;
+    left: -200px;
+    bottom: 0;
+    width: 200px;
+    background-color: #292f51cd;
+    box-shadow: 0px 5px 12px 0px rgb(46, 46, 46);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    transition: .6s;
+} .side-bar a {
+    text-decoration: none;
+    background-color: #ff7070;
+    width: 90%;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin-top: 20px;
+} .side-bar button {
+    border: none;
+    background-color: #00bf63;
+    width: 90%;
+    padding: 10px 0;
+    letter-spacing: 2px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+@media (max-width: 740px) {
+    .con4-a, .con4-b{
+        flex-direction: column;
+        align-items: center;
+    }
+    .con2-b img{
+        width: 300px;
+    }
+    .con4-a button, .con4-b button {
+        width: 100px;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 590px) {
+    .con2-b img{
+        width: 250px;
+    }
+    .con4-a button, .con4-b button {
+        width: 100px;
+        margin-top: 10px;
+    }
+    .con2-a img, .con2-c img{
+        height: 80%;
+        width: 250px;
+        background-color: transparent;
+    }
+}
+@media (max-width: 440px) {
+    .con2-b img{
+        width: 250px;
+    }
+    .con4-a button, .con4-b button {
+        width: 80px;
+        margin-top: 10px;
+    } .con4 img {
+        width: 30px;
+    } 
+    .con4-a, .con4-b {
+        width: 50%;
+        padding: 10px 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    } .con4-b {
+        margin-left: 10px;
+    } .con4-a {
+        margin-right: 10px;
+    } 
+
+    .con2-a img, .con2-c img{
+        height: 60%;
+        width: 200px;
+    }
+    .con3-a span, .con3-b span, .con3-c span{
+        font-size: 35px;
+    }
+    .con5-a span, .con5-b span {
+        font-size: 20px;
+    }
+    .con1-b img{
+        margin-top: 20px;
+        width: 50px
+    }
+    .life-green, .life-gray, .life-red {
+        border-radius: 10px;
+        padding: 7px;
+        margin-left: 10px;
+    } 
+    .con1 {
+        margin-top: 30px;
+    }
+    .con2-b {
+        justify-content: end;
+        margin-bottom: 50px;
+    }
+    .con3 {
+        margin-top: -20px;
+    }
+}
+@media (max-width: 380px) {
+     .con4-a button, .con4-b button {
+        width: 70px;
+        margin-top: 10px;
+    } .con4 img {
+        width: 20px;
+    } 
+}
